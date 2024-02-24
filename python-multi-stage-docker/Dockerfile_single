@@ -1,0 +1,11 @@
+# Use Python Slim as base image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the Python script into the container
+COPY addition.py .
+
+# Command to run the Python script
+CMD ["python", "addition.py"]

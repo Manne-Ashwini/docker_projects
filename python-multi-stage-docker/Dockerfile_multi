@@ -1,0 +1,15 @@
+# Stage 1: Build stage
+FROM python:3.9 AS builder
+
+WORKDIR /app
+
+COPY addition.py .
+
+# Stage 2: Runtime stage
+FROM gcr.io/distroless/python3-debian10
+
+COPY --from=builder /app /app
+
+WORKDIR /app
+
+CMD ["python", "addition.py"]
